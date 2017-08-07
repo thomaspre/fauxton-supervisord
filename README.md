@@ -1,4 +1,4 @@
-# fauxton-supervisord
+# Fauxton Supervisord
 
 Supervisord start the fauxton serveur with docker couchdb endpoint
 By default fauxton listening on 8000
