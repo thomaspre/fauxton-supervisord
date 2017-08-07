@@ -21,6 +21,8 @@ RUN apt-get update && apt-get install -my \
 # Add configuration files
 COPY supervisord.conf /etc/supervisor/conf.d/
 
+EXPOSE 8000
+
 ################################################################################
 # Entrypoint
 ################################################################################

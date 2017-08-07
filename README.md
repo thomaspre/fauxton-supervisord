@@ -11,6 +11,22 @@ use `COUCHDB_SERVER_PORT` to specify port of the server.
 * ``COUCHDB_SERVER_NAME`` - Host name of couchdb service
 * ``COUCHDB_SERVER_PORT`` - Port of couchdb service
 
+## docker compose example
+
+```
+  fauxton:
+    image: thomaspre/fauxton-supervisord
+    ports:
+        - 8000:8000
+    volumes:
+      - ./docker-log/fauxton:/var/log/supervisor
+    environement:
+        - COUCHDB_SERVER_NAME=couchdb
+        - COUCHDB_SERVER_PORT=5984
+```
+
+Then open http://127.0.0.1:8000/ to see fauxton interface
+
 ## Nginx revers proxy configuration
 
 You can use an nginx revers proxy with this example vhost :
@@ -38,3 +54,5 @@ server {
     }
 }
 ```
+
+Remove ports line in compose file in this configuration
