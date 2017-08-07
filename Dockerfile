@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -my \
 	&& rm -rf /var/lib/apt/lists/*
 
 # Add configuration files
+COPY docker-entrypoint.sh /
 COPY supervisord.conf /etc/supervisor/conf.d/
 
 EXPOSE 8000
