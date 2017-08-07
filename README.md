@@ -1,7 +1,16 @@
 # Docker Fauxton Supervisord
 
-Supervisord start the fauxton serveur with docker couchdb endpoint
+Supervisord start the fauxton service with specified docker couchdb endpoint
 By default fauxton listening on 8000
+
+## Test by command line with couchDB docker
+
+docker run -d --name couchdb couchdb
+docker run -d -p 8000:8000 --link=couchdb:couchdb --name fauxton thomaspre-fauxton-supervisord
+
+Then open http://docker-machine-ip:8000/ to see fauxton interface plugged on this couchdb server
+
+Fauxton will use by default couchdb:5984 if couchdb host ping work or throw an error
 
 ## CouchDB server configuration
 
@@ -11,7 +20,13 @@ use `COUCHDB_SERVER_PORT` to specify port of the server.
 * ``COUCHDB_SERVER_NAME`` - Host name of couchdb service
 * ``COUCHDB_SERVER_PORT`` - Port of couchdb service
 
-## docker compose example
+## Command line example with specified couchdb server
+
+``docker run -d -p 8000:8000 --link=couchdb_docker:couchdb --name fauxton -e COUCHDB_SERVER_NAME=couchdb -e COUCHDB_SERVER_PORT=5984 thomaspre/fauxton-supervisord`` 
+
+Will use couchdb:5984 server
+
+## docker compose example with specified couchdb server
 
 ```
   fauxton:
@@ -24,8 +39,6 @@ use `COUCHDB_SERVER_PORT` to specify port of the server.
         - COUCHDB_SERVER_NAME=couchdb
         - COUCHDB_SERVER_PORT=5984
 ```
-
-Then open http://127.0.0.1:8000/ to see fauxton interface
 
 ## Nginx revers proxy configuration
 
@@ -55,4 +68,4 @@ server {
 }
 ```
 
-Remove ports line in compose file in this configuration
+Remove fauxton ports line in compose file for this configuration
