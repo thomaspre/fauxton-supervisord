@@ -12,13 +12,7 @@ ENV FAUXTON_VERSION=1.1.13
 # Install packages
 RUN apt-get update && apt-get install -my \
     supervisor \
-    nano \
     && npm install --no-optional --only=production --quiet --global --no-color fauxton@$FAUXTON_VERSION \
-    \
-    && rm /etc/timezone \
-  	&& echo "Europe/Paris" > /etc/timezone \
-  	&& chmod 644 /etc/timezone \
-	&& dpkg-reconfigure -f noninteractive tzdata \
     \
 	&& apt-get purge -y --auto-remove \
 	&& apt-get clean \
