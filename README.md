@@ -3,7 +3,7 @@
 Supervisord start the fauxton serveur with docker couchdb endpoint
 By default fauxton listening on 8000
 
-## Usage with external server
+## CouchDB server configuration
 
 You can specify CouchDB host in the `COUCHDB_SERVER_NAME` environment variable. You can also
 use `COUCHDB_SERVER_PORT` to specify port of the server.
@@ -11,7 +11,7 @@ use `COUCHDB_SERVER_PORT` to specify port of the server.
 * ``COUCHDB_SERVER_NAME`` - Host name of couchdb service
 * ``COUCHDB_SERVER_PORT`` - Port of couchdb service
 
-## Usage with nginx revers proxy
+## Nginx revers proxy configuration
 
 You can use an nginx revers proxy with this example vhost :
 
