@@ -1,17 +1,21 @@
 # fauxton-supervisord
 
-Serveur timezone is set to Europe/Paris
-
 Supervisord start the fauxton serveur with docker couchdb endpoint
-
 By default fauxton listening on 8000
 
-You need to give this parameters by environement vairables on docker start :
+## Usage with external server
 
-COUCHDB_SERVER_NAME : Host name of couchdb service
-COUCHDB_SERVER_PORT : Port of couchdb service
+You can specify CouchDB host in the `COUCHDB_SERVER_NAME` environment variable. You can also
+use `COUCHDB_SERVER_PORT` to specify port of the server.
 
-You can make an nginx revers proxy with this vhost :
+* ``COUCHDB_SERVER_NAME`` - Host name of couchdb service
+* ``COUCHDB_SERVER_PORT`` - Port of couchdb service
+
+## Usage with nginx revers proxy
+
+You can use an nginx revers proxy with this example vhost :
+
+```
 server {
     listen   80;
     server_name fauxton.domain.com;
@@ -33,3 +37,4 @@ server {
         proxy_pass $backend;
     }
 }
+```
