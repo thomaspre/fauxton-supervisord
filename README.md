@@ -3,12 +3,16 @@
 Supervisord start the fauxton service with specified docker couchdb endpoint
 By default fauxton listening on 8000
 
+## Application logs
+
+Get all logs by mounting a volume on /var/log/supervisor
+
 ## Test by command line with couchDB docker
 
 docker run -d --name couchdb couchdb
-docker run -d -p 8000:8000 --link=couchdb:couchdb --name fauxton thomaspre-fauxton-supervisord
+docker run -d -p 8000:8000 --link=couchdb:couchdb -v /tmp/log/my_fauxton:/var/log/supervisor --name my_fauxton thomaspre/fauxton-supervisord
 
-Then open http://docker-machine-ip:8000/ to see fauxton interface plugged on this couchdb server
+Then open http://docker-machine-ip:8000/ to see fauxton interface plugged on this couchdb server and /tmp/log/my_fauxton for stdout and stderr
 
 Fauxton will use by default couchdb:5984 if couchdb host ping work or throw an error
 
