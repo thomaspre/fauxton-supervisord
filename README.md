@@ -20,13 +20,13 @@ use `COUCHDB_SERVER_PORT` to specify port of the server.
 * ``COUCHDB_SERVER_NAME`` - Host name of couchdb service
 * ``COUCHDB_SERVER_PORT`` - Port of couchdb service
 
-## Command line example with specified couchdb server
+## Command line with specified couchdb server
 
 ``docker run -d -p 8000:8000 --link=couchdb_docker:couchdb --name fauxton -e COUCHDB_SERVER_NAME=couchdb -e COUCHDB_SERVER_PORT=5984 thomaspre/fauxton-supervisord`` 
 
 Will use couchdb:5984 server
 
-## docker compose example with specified couchdb server
+## docker compose with specified couchdb server
 
 ```
   fauxton:
